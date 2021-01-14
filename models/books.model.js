@@ -18,8 +18,7 @@ export default class Book {
     // Retreives all books from db and returns it.
     static async getBooks() {
         try {
-            const allBooks = await books.find({});
-            return allBooks;
+            return await books.find({});
         }
         catch (e) {
             console.error(e);
@@ -29,8 +28,7 @@ export default class Book {
 
     static async getBookById(bookId) {
         try {
-            const result = await books.find({ _id: ObjectId(bookId)});
-            return result;
+            return await books.find({ _id: ObjectId(bookId)});
         }
         catch (e) {
             console.error(e);
@@ -40,8 +38,7 @@ export default class Book {
     // Adds book to db and returns a response from db.
     static async addBook(book) {
         try {
-            const result = await books.insertOne(book);
-            return result;
+           return await books.insertOne(book);
         }
         catch (e) {
             console.error(e);
@@ -51,8 +48,7 @@ export default class Book {
     // Removes book from db and returns a response from db.
     static async removeBook(bookId) {
         try {
-            const result = await books.deleteOne({ _id: ObjectId(bookId) });
-            return result;
+            return await books.deleteOne({ _id: ObjectId(bookId) });  
         }
         catch (e) {
             console.error(e);
@@ -62,8 +58,7 @@ export default class Book {
     // Updates book in db and returns a response from db. 
     static async updateBook(book) {
         try {
-            const result = await books.replaceOne({ _id: ObjectId(bookId) });
-            return result;
+           return await books.replaceOne({ _id: ObjectId(bookId) }, book);
         }
         catch (e) {
             console.error(e);
