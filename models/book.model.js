@@ -28,7 +28,7 @@ class Book {
 
     static async getBookById(bookId) {
         try {
-            return await books.find({ _id: ObjectId(bookId)});
+            return await books.findOne({ _id: ObjectId(bookId)});
         }
         catch (e) {
             console.error(e);

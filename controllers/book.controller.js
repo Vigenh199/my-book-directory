@@ -8,8 +8,8 @@ class BookController {
     }
 
     static async apiGetBookById(req, res) {
-        const result = await Book.getBookById(req.body.id);
-        res.json(result);
+        const result = await Book.getBookById(req.params.bookId);
+        res.send(result);
     }
 
     // Adds book to a db and then returns it
@@ -23,12 +23,12 @@ class BookController {
         const result = await Book.addBook(newBook);
         const addedBook = await Book.getBookById(result.insertedId);
 
-        res.json(addedBook);
+        res.send(addedBook);
     }
 
     static async apiRemoveBook(req, res) {
         const result = await Book.removeBook(req.body.id);
-        res.json(result);
+        res.send(result);
     }
 
     static async apiUpdateBook(req, res) {
@@ -41,7 +41,7 @@ class BookController {
         }
 
         const result = await Book.updateBook(updateDoc, req.body.id);
-        res.json(result);
+        res.send(result);
     }
 }
 
