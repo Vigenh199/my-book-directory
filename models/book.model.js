@@ -8,7 +8,7 @@ class Book {
             return;
         }
         try {
-            books = await conn.db('myApps').collection('books');
+            books = await conn.db('my_apps').collection('books');
         }
         catch (e) {
             console.error(`Unable establish a connection handle in Book: ${e}`);
@@ -18,7 +18,7 @@ class Book {
     // Retreives all books from db and returns it.
     static async getBooks() {
         try {
-            return await books.find({});
+            return await books.find({}).toArray();
         }
         catch (e) {
             console.error(e);

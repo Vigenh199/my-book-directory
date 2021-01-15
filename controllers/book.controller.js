@@ -4,7 +4,7 @@ const Book = require("../models/book.model");
 class BookController {
     static async apiGetBooks(req, res) {
         const result = await Book.getBooks();
-        res.json(result);
+        res.send(result);
     }
 
     static async apiGetBookById(req, res) {
