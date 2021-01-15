@@ -2,7 +2,7 @@ const { ObjectId } = require('mongodb');
 
 let books;
 
-export default class Book {
+class Book {
     static async injectDB(conn) {
         if (books) {
             return;
@@ -56,12 +56,14 @@ export default class Book {
     }
 
     // Updates book in db and returns a response from db. 
-    static async updateBook(book) {
+    static async updateBook(updateDoc, bookId) {
         try {
-           return await books.replaceOne({ _id: ObjectId(bookId) }, book);
+            return await books.updateOne({ _id: ObjectId(bookId) }, updateDoc);
         }
         catch (e) {
             console.error(e);
         }
     }
 }
+
+module.exports = Book;
