@@ -26,8 +26,9 @@ class BookController {
         res.send(addedBook);
     }
 
+    // Returns a result of delete operation
     static async apiRemoveBook(req, res) {
-        const result = await Book.removeBook(req.body.id);
+        const { result } = await Book.removeBook(req.params.bookId);
         res.send(result);
     }
 
@@ -40,7 +41,7 @@ class BookController {
             }
         }
 
-        const result = await Book.updateBook(updateDoc, req.body.id);
+        const { result } = await Book.updateBook(updateDoc, req.params.bookId);
         res.send(result);
     }
 }
